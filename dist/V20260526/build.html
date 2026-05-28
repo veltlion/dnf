@@ -8025,14 +8025,14 @@ if (typeof window !== 'undefined') {
 
                         <!-- 添加按钮 -->
                         <div v-if="!showTraitDraftForm" style="text-align:center; padding:10px;">
-                            <button @click="addCustomTrait" :disabled="remainingRP < 30 || positiveTraitCount >= 3"
+                            <button @click="addCustomTrait" :disabled="remainingRP < 30 || positiveTraitCount >= 999"
                                 style="background:linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%); color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:600; transition:all 0.2s;"
-                                :style="{opacity: (remainingRP < 30 || positiveTraitCount >= 3) ? 0.5 : 1, cursor: (remainingRP < 30 || positiveTraitCount >= 3) ? 'not-allowed' : 'pointer'}">
+                                :style="{opacity: (remainingRP < 30 || positiveTraitCount >= 999) ? 0.5 : 1, cursor: (remainingRP < 30 || positiveTraitCount >= 999) ? 'not-allowed' : 'pointer'}">
                                 <i class="ri-add-line"></i> {{ customTraits.length > 0 ? '再添加一个' : '创建自定义特质' }}
                             </button>
                             <div v-if="remainingRP < 30"
                                 style="font-size:0.75rem; color:var(--danger); margin-top:6px;">RP不足（需要30 RP）</div>
-                            <div v-else-if="positiveTraitCount >= 3"
+                            <div v-else-if="positiveTraitCount >= 999"
                                 style="font-size:0.75rem; color:var(--danger); margin-top:6px;">正面特质已满（最多3个）</div>
                         </div>
                     </div>
@@ -8112,14 +8112,14 @@ if (typeof window !== 'undefined') {
 
                         <!-- 添加按钮 -->
                         <div v-if="!showExpertiseDraftForm" style="text-align:center; padding:10px;">
-                            <button @click="addCustomExpertise" :disabled="remainingRP < 20 || positiveTraitCount >= 3"
+                            <button @click="addCustomExpertise" :disabled="remainingRP < 20 || positiveTraitCount >= 999"
                                 style="background:linear-gradient(135deg, var(--accent) 0%, #40916c 100%); color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:600; transition:all 0.2s;"
-                                :style="{opacity: (remainingRP < 20 || positiveTraitCount >= 3) ? 0.5 : 1, cursor: (remainingRP < 20 || positiveTraitCount >= 3) ? 'not-allowed' : 'pointer'}">
+                                :style="{opacity: (remainingRP < 20 || positiveTraitCount >= 999) ? 0.5 : 1, cursor: (remainingRP < 20 || positiveTraitCount >= 999) ? 'not-allowed' : 'pointer'}">
                                 <i class="ri-add-line"></i> {{ customExpertise.length > 0 ? '再添加一个' : '创建自定义专长' }}
                             </button>
                             <div v-if="remainingRP < 20"
                                 style="font-size:0.75rem; color:var(--danger); margin-top:6px;">RP不足（需要20 RP）</div>
-                            <div v-else-if="positiveTraitCount >= 3"
+                            <div v-else-if="positiveTraitCount >= 999"
                                 style="font-size:0.75rem; color:var(--danger); margin-top:6px;">正面特质已满（最多3个）</div>
                         </div>
                     </div>
@@ -10337,7 +10337,7 @@ if (typeof window !== 'undefined') {
                     avatar: localStorage.getItem('rpg_player_avatar') || '', // 头像图片URL
                     // DND标准六维：力量、敏捷、体质、智力、感知、魅力
                     attributes: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 },
-                    reincarnationPoints: 100,
+                    reincarnationPoints: 10000,
                     class: '', // Stores the Advancement Name
                     skills: [], // Initial empty skills
                     backstory: '',
@@ -13520,8 +13520,8 @@ if (typeof window !== 'undefined') {
                 });
                 function isTraitDisabled(t) {
                     if (hasTrait(t)) return false;
-                    if (t.cost >= 0 && positiveTraitCount.value >= 3) return true;
-                    if (t.cost < 0 && negativeTraitCount.value >= 3) return true;
+                    if (t.cost >= 0 && positiveTraitCount.value >= 999) return true;
+                    if (t.cost < 0 && negativeTraitCount.value >= 999) return true;
                     return false;
                 }
                 function toggleTrait(t) {
@@ -15358,7 +15358,7 @@ if (typeof window !== 'undefined') {
                         character.level = 1;
                         character.avatar = '';
                         character.attributes = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
-                        character.reincarnationPoints = 100;
+                        character.reincarnationPoints = 10000;
                         character.class = '';
                         character.skills = [];
                         character.backstory = '';
